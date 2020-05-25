@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use Validator;
 use App\User;
 use Firebase\JWT\JWT;
@@ -25,10 +26,10 @@ class AuthController extends BaseController
     protected function jwt(User $user)
     {
         $payload = [
-            'iss' => "lumen-jwt", // Issuer of the token
-            'sub' => $user->id, // Subject of the token
-            'iat' => time(), // Time when JWT was issued.
-            'exp' => time() + 60 * 60 // Expiration time
+            'iss' => "lumen-jwt",
+            'sub' => $user->id,
+            'iat' => time(),
+            'exp' => time() + 60 * 60
         ];
 
         return JWT::encode($payload, env('JWT_SECRET'));
@@ -43,17 +44,15 @@ class AuthController extends BaseController
         ]);
 
         $user = User::where('email', $this->request->input('email'))->first();
+        if (!$user) {
+            return response()->json([
+                'message' => 'User does not exist.'
+            ], 400);
+        }
         $userResponse = new User();
         $userResponse->email = $user->email;
         $userResponse->id = $user->id;
         $userResponse->name = $user->name;
-        if (!$user) {
-
-            return response()->json([
-
-                'error' => 'Email does not exist.'
-            ], 400);
-        }
 
         if (Hash::check($this->request->input('password'), $user->password)) {
             return response()->json([
@@ -61,6 +60,9 @@ class AuthController extends BaseController
                 'access_token' => $this->jwt($user)
 
             ], 200);
+        } else {
+            return response()->json([
+                'message' => 'Credentials not correct'], 400);
         }
     }
 
@@ -71,15 +73,12 @@ class AuthController extends BaseController
             'email' => 'required',
             'password' => 'required|confirmed',
         ];
-
-        $this->validate($request, $rules);
-
-        $fields = $request->all();
+        $fields = $this->validate($request, $rules);
         $fields['password'] = Hash::make($request->password);
 
         $user = new User($fields);
+        $role = Role::find(1);
         $user->save();
-        $role = \App\Role::find(1);
         $role->users()->save($user);
         return response()->json([
             'message' => 'Successfully created user!'
