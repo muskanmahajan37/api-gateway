@@ -26,6 +26,7 @@ $app = new Laravel\Lumen\Application(
  $app->withFacades();
 
  $app->withEloquent();
+$app->register(App\Providers\RouteBindingServiceProvider::class);
 
 /**
  * Registering custom config files
