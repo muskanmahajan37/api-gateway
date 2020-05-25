@@ -12,22 +12,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 {
     use Authenticatable, Authorizable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name', 'email','password'
     ];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
     protected $hidden = [
-        'password',
+        'password','email_verified_at','remember_token','created_at','updated_at'
     ];
     public function role(){
         return $this->belongsTo(Role::class);
