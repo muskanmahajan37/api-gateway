@@ -44,4 +44,8 @@ class SubCategoryController
     {
         return $this->successResponse($this->subcategoryService->destroy($subcategory));
     }
+
+    public function findByCategory($category){
+        return $this->successResponse($this->subcategoryService->findByCategory($category));
+    }
 }
