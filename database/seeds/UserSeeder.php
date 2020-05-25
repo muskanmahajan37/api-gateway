@@ -14,13 +14,21 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $password = 123456;
+        $password = env("FIRST_ADMIN_PASSWORD");
+        $email = env("FIRST_ADMIN_EMAIL");
+
+        $userPassword = env("FIRST_USER_PASSWORD");
+        $userEmail = env("FIRST_USER_EMAIL");
+
+
         $password_hashed =Hash::make($password);
+        $user_password_hashed =Hash::make($userPassword);
+
         $userRole = Role::find(1);
         $adminRole = Role::find(2);
 
-        $admin = User::create(['name' => 'user','email'=>'admin@test.com','password'=>$password_hashed]);
-        $user = User::create(['name' => 'user','email'=>'user@test.com','password'=>$password_hashed]);
+        $admin = User::create(['name' => 'user','email'=>$email,'password'=>$password_hashed]);
+        $user = User::create(['name' => 'user','email'=>$userEmail,'password'=>$user_password_hashed]);
         $userRole->users()->save($user);
         $adminRole->users()->save($admin);
     }
