@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e1d870c20eb44ec19014907347ab0825",
+    "content-hash": "a4d48016f37a306a8239a36a20ead202",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -61,16 +61,6 @@
                 "class",
                 "preload",
                 "preloader"
-            ],
-            "funding": [
-                {
-                    "url": "https://github.com/GrahamCampbell",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/classpreloader/classpreloader",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-04-12T22:02:42+00:00"
         },
@@ -2064,6 +2054,58 @@
             "time": "2018-11-21T21:42:43+00:00"
         },
         {
+            "name": "mmghv/lumen-route-binding",
+            "version": "1.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mmghv/lumen-route-binding.git",
+                "reference": "872881509313d58071c06d0426ef5851484ca270"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mmghv/lumen-route-binding/zipball/872881509313d58071c06d0426ef5851484ca270",
+                "reference": "872881509313d58071c06d0426ef5851484ca270",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/lumen-framework": "5 - 7",
+                "nikic/fast-route": ">=0.4 <2.0",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "~1.0",
+                "phpunit/phpunit": "~7.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "mmghv\\LumenRouteBinding\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohamed Gharib",
+                    "email": "mmghv@coddest.com"
+                }
+            ],
+            "description": "Route model binding for Lumen",
+            "homepage": "https://github.com/mmghv/lumen-route-binding",
+            "keywords": [
+                "bind",
+                "binding",
+                "fast-route",
+                "lumen",
+                "model",
+                "route",
+                "route model binding"
+            ],
+            "time": "2020-04-01T19:04:17+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.24.0",
             "source": {
@@ -3484,20 +3526,6 @@
                 "portable",
                 "shim"
             ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-05-12T16:47:27+00:00"
         },
         {
@@ -3604,20 +3632,6 @@
                 "compatibility",
                 "polyfill",
                 "shim"
-            ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-05-12T16:14:59+00:00"
         },
@@ -3950,12 +3964,6 @@
                 "auth",
                 "jwt",
                 "laravel"
-            ],
-            "funding": [
-                {
-                    "url": "https://www.patreon.com/seantymon",
-                    "type": "patreon"
-                }
             ],
             "time": "2020-03-04T11:21:28+00:00"
         },
@@ -5659,6 +5667,5 @@
     "platform": {
         "php": ">=7.1.3"
     },
-    "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "platform-dev": []
 }
