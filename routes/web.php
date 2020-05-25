@@ -5,6 +5,7 @@
 $router->post('/login','AuthController@authenticate');
 $router->post('/register','AuthController@register');
 $router->get('/services', 'Service\ServiceController@index');
+$router->get("/testhello",'Python\PythonController@hello');
 
 
 $router->group(['middleware' => 'jwt.auth'], function() use ($router){
