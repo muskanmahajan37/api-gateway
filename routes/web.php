@@ -1,13 +1,20 @@
 
 <?php
 
-
+#public routes
 $router->post('/login','AuthController@authenticate');
 $router->post('/register','AuthController@register');
 $router->get('/services', 'Service\ServiceController@index');
 
 
 $router->group(['middleware' => 'jwt.auth'], function() use ($router){
+    # users
+    $router->get('/users','UserController@index');
+    $router->get('/users/{user}','UserController@show');
+    $router->delete('/users/{user}','UserController@destroy');
+    $router->patch('/users/{user}','UserController@update');
+
+
     $router->get('services/{service}','Service\ServiceController@show');
     $router->post('services', 'Service\ServiceController@store');
     $router->patch('services/{service}','Service\ServiceController@update');
@@ -29,6 +36,8 @@ $router->group(['middleware' => 'jwt.auth'], function() use ($router){
     $router->put('/authors/{author}', 'Author\AuthorController@update');
     $router->patch('/authors/{author}', 'Author\AuthorController@update');
     $router->delete('/authors/{author}', 'Author\AuthorController@destroy');
+
+
 
 });
 
