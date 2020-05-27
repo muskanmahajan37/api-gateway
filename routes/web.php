@@ -6,6 +6,11 @@ $router->post('/login','AuthController@authenticate');
 $router->post('/register','AuthController@register');
 $router->get('/services', 'Service\ServiceController@index');
 
+$router->get('/categories','Service\CategoryController@index');
+$router->get('/categories/{category}','Service\CategoryController@show');
+$router->get('/categories/{category}/subcategories', 'Service\SubCategoryController@findByCategory');
+$router->get('/subcategories','Service\SubCategoryController@index');
+
 
 $router->group(['middleware' => 'jwt.auth'], function() use ($router){
     # users
@@ -25,10 +30,7 @@ $router->group(['middleware' => 'jwt.auth'], function() use ($router){
     $router->put('subcategories/{subcategory}', 'Service\SubCategoryController@update');
 
     $router->post('categories', 'Service\CategoryController@store');
-    $router->get('categories','Service\CategoryController@index');
-    $router->get('categories/{category}','Service\CategoryController@show');
     $router->put('categories/{category}','Service\CategoryController@update');
-    $router->get('categories/{category}/subcategories', 'Service\SubCategoryController@findByCategory');
 
     $router->get('/authors', 'Author\AuthorController@index');
     $router->post('/authors', 'Author\AuthorController@store');
