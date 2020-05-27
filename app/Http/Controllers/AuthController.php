@@ -81,9 +81,14 @@ class AuthController extends BaseController
         $user->save();
         $role->users()->save($user);
         return response()->json([
-            'message' => 'Successfully created user!'
+            'message' => 'Successfully created user!',
+            'id'=>$user->id,
+            'name'=>$user->name,
+            'email'=>$user->email,
+            'access_token' => $this->jwt($user)
         ], 201);
     }
+
 }
 
 
