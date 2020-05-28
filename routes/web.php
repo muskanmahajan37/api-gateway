@@ -5,6 +5,7 @@
 $router->post('/login','AuthController@authenticate');
 $router->post('/register','AuthController@register');
 $router->get('/services', 'Service\ServiceController@index');
+$router->get('/categories/{category}/services', 'Service\ServiceController@findByCategory');
 
 $router->get('/categories','Service\CategoryController@index');
 $router->get('/categories/{category}','Service\CategoryController@show');
