@@ -4,12 +4,7 @@ namespace App\Traits;
 
 trait ApiResponser
 {
-    /**
-     * Success Response
-     * @param $data
-     * @param int $code
-     * @return $this
-     */
+
     public function successResponse($data, $code = \Illuminate\Http\Response::HTTP_OK)
     {
         return response($data, $code)->header('Content-Type', 'application/json');
