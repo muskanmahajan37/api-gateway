@@ -46,5 +46,12 @@ class ServiceController extends Controller
     {
         return $this->successResponse($this->serviceService->findByCategory($category));
     }
+    public function findBySubCategory($subcategory){
+        return $this->successResponse($this->serviceService->findBySubCategory($subcategory));
+
+    }
+    public function findByUser($user){
+        return $this->successResponse($this->serviceService->findByUser($user->id));
+    }
 }
 

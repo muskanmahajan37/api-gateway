@@ -46,6 +46,13 @@ class ServiceService
 
         return $this->performRequest('GET', "/categories/{$category}/services");
     }
+    public function findBySubCategory($subcategory){
+        return $this->performRequest('GET', "/subcategories/{$subcategory}/services");
+    }
+    public function findByUser($user){
+        return $this->performRequest('GET', "/users/{$user}/services");
+
+    }
 
 
 }

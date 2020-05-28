@@ -11,7 +11,8 @@ $router->get('/categories','Service\CategoryController@index');
 $router->get('/categories/{category}','Service\CategoryController@show');
 $router->get('/categories/{category}/subcategories', 'Service\SubCategoryController@findByCategory');
 $router->get('/subcategories','Service\SubCategoryController@index');
-
+$router->get('subcategories/{subcategory}/services', 'Service\ServiceController@findBySubCategory');
+$router->get('users/{user}/services', 'Service\ServiceController@findByUser');
 
 $router->group(['middleware' => 'jwt.auth'], function() use ($router){
     # users
