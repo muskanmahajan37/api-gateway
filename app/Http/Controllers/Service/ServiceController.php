@@ -42,5 +42,9 @@ class ServiceController extends Controller
     {
         return $this->successResponse($this->serviceService->destroy($service));
     }
+    public function findByCategory($category)
+    {
+        return $this->successResponse($this->serviceService->findByCategory($category));
+    }
 }
 
