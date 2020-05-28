@@ -42,5 +42,10 @@ class ServiceService
     {
         return $this->performRequest('DELETE', "/services/{$service}");
     }
+    public function findByCategory($category){
+
+        return $this->performRequest('GET', "/categories/{$category}/services");
+    }
+
 
 }
