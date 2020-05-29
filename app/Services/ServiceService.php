@@ -2,6 +2,9 @@
 namespace App\Services;
 
 use App\Traits\ConsumeExternalService;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 class ServiceService
 {
@@ -24,6 +27,11 @@ class ServiceService
 
     public function store($data)
     {
+
+        $fileToStore= $data['image'];
+        $file = $fileToStore->getClientOriginalName();
+        $data['image']=$file;
+
         return $this->performRequest('POST', '/services', $data);
     }
 
