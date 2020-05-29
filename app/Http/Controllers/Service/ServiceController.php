@@ -7,6 +7,7 @@ use App\Services\ServiceService;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ServiceController extends Controller
 {
@@ -25,7 +26,12 @@ class ServiceController extends Controller
 
     public function store(Request $request)
     {
+
+        $image = $request->file('image');
+         $fileToStore =$image->getClientOriginalName();
+        $image->move(base_path('public/images'), $fileToStore);
         return $this->successResponse($this->serviceService->store($request->all()));
+
     }
 
     public function show($service)
@@ -55,3 +61,19 @@ class ServiceController extends Controller
     }
 }
 
+////        $image = $request->file('image');
+////        $fileToStore =$image->getClientOriginalName();
+////        return $fileToStore;
+////        return $request->all();
+//        $imagee = $request->file('image');
+//        $fileToStore =$imagee->getClientOriginalName();
+//        $user_id = $request->user_id;
+//        $name=$request->name;
+//        $description = $request->description;
+//        $category_id = $request->category_id;
+//        $subcategory_id = $request->subcategory_id;
+//        $price = $request->price;
+//        $image= $fileToStore;
+//        $data = array($user_id,$name,$description,$category_id,$subcategory_id,$price,$image);
+////        return $fileToStore;
+////        return $request->all();
