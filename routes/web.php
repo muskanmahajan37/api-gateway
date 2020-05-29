@@ -14,6 +14,8 @@ $router->get('/subcategories','Service\SubCategoryController@index');
 $router->get('subcategories/{subcategory}/services', 'Service\ServiceController@findBySubCategory');
 $router->get('users/{user}/services', 'Service\ServiceController@findByUser');
 
+$router->post('services', 'Service\ServiceController@store');
+
 $router->group(['middleware' => 'jwt.auth'], function() use ($router){
     # users
     $router->get('/users','UserController@index');
@@ -23,7 +25,6 @@ $router->group(['middleware' => 'jwt.auth'], function() use ($router){
 
 
     $router->get('services/{service}','Service\ServiceController@show');
-    $router->post('services', 'Service\ServiceController@store');
     $router->patch('services/{service}','Service\ServiceController@update');
     $router->delete('services/{service}','Service\ServiceController@destroy');
 
