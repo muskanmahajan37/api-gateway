@@ -23,11 +23,11 @@ class UserSeeder extends Seeder
         $userRole = Role::find(1);
         $adminRole = Role::find(2);
 
-        $admin = User::create(['name' => 'user','email'=>$email,'password'=>$password_hashed]);
-        $user = User::create(['name' => 'user','email'=>$userEmail,'password'=>$user_password_hashed]);
-        $user3 = User::create(['name' => 'Taulant','email'=>'taulant@gmail.com','password'=>$user_password_hashed]);
-        $user4 = User::create(['name' => 'Valon','email'=>'valon@gmail.com','password'=>$user_password_hashed]);
-        $user5 = User::create(['name' => 'Rron','email'=>'rron@gmail.com','password'=>$user_password_hashed]);
+        $admin = User::create(['name' => 'user','email'=>$email,'password'=>$password_hashed,'image'=>'noimage.jpg']);
+        $user = User::create(['name' => 'user','email'=>$userEmail,'password'=>$user_password_hashed,'image'=>'noimage.jpg']);
+        $user3 = User::create(['name' => 'Taulant','email'=>'taulant@gmail.com','password'=>$user_password_hashed,'image'=>'noimage.jpg']);
+        $user4 = User::create(['name' => 'Valon','email'=>'valon@gmail.com','password'=>$user_password_hashed,'image'=>'noimage.jpg']);
+        $user5 = User::create(['name' => 'Rron','email'=>'rron@gmail.com','password'=>$user_password_hashed,'image'=>'noimage.jpg']);
 
         $userRole->users()->save($user);
         $userRole->users()->save($user3);
