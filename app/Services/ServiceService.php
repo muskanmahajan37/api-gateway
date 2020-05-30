@@ -27,10 +27,15 @@ class ServiceService
 
     public function store($data)
     {
+        if($data['image']){
+            $fileToStore= $data['image'];
+            $file = $fileToStore->getClientOriginalName();
+            $data['image']=$file;
+        }else{
+            $data['image']='noimage,jpg';
 
-        $fileToStore= $data['image'];
-        $file = $fileToStore->getClientOriginalName();
-        $data['image']=$file;
+        }
+
 
         return $this->performRequest('POST', '/services', $data);
     }
