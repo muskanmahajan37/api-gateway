@@ -43,6 +43,7 @@ class AuthController extends BaseController
             'password' => 'required'
         ]);
 
+
         $user = User::where('email', $this->request->input('email'))->first();
         if (!$user) {
             return response()->json([
@@ -72,11 +73,20 @@ class AuthController extends BaseController
             'name' => 'required|max:255',
             'email' => 'required',
             'password' => 'required|confirmed',
+            'image'=>'image'
         ];
         $fields = $this->validate($request, $rules);
         $fields['password'] = Hash::make($request->password);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $fileToStore =$image->getClientOriginalName();
+            $image->move(base_path('public/user'), $fileToStore);
 
+        } else {
+            $fileToStore = 'noimage.jpg';
+        }
         $user = new User($fields);
+        $user['image']=$fileToStore;
         $role = Role::find(1);
         $user->save();
         $role->users()->save($user);
@@ -84,6 +94,7 @@ class AuthController extends BaseController
         $userResponse->email = $user->email;
         $userResponse->id = $user->id;
         $userResponse->name = $user->name;
+        $userResponse->image=$fileToStore;
 
         return response()->json([
             'access_token' => $this->jwt($user),
