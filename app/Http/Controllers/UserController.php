@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Collection;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Namshi\JOSE\Signer\OpenSSL\None;
 
 class UserController extends Controller
 {
@@ -23,6 +21,18 @@ class UserController extends Controller
         return response()->json(
             $user,
             201);
+    }
+
+    public function getUserByUsername($username)
+    {
+        $user = User::where('username', $username)->get()->first();
+        if (!$user) {
+            return response()->json([
+                'message' => 'User cannot be found'], 404);
+        }
+        return response()->json(
+            $user, 200
+        );
     }
 
     public function destroy(User $user)
