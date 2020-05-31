@@ -7,6 +7,8 @@ $router->post('/register','AuthController@register');
 $router->get('/services', 'Service\ServiceController@index');
 $router->get('/categories/{category}/services', 'Service\ServiceController@findByCategory');
 
+$router->get("/charge", 'Payment\PaymentController@index');
+
 $router->get('/categories','Service\CategoryController@index');
 $router->get('/categories/{category}','Service\CategoryController@show');
 $router->get('/categories/{category}/subcategories', 'Service\SubCategoryController@findByCategory');
