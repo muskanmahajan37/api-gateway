@@ -3,19 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Role;
-use Validator;
 use App\User;
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
-use Firebase\JWT\ExpiredException;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Lumen\Routing\Controller as BaseController;
-use function foo\func;
+use Validator;
 
 class AuthController extends BaseController
 {
-
-
     private $request;
 
     public function __construct(Request $request)
@@ -73,8 +69,9 @@ class AuthController extends BaseController
         $rules = [
             'name' => 'required|max:255',
             'email' => 'required',
+            'username' => 'required',
             'password' => 'required|confirmed',
-            'image'=>'image'
+            'image' => 'image'
         ];
         $fields = $this->validate($request, $rules);
         $fields['password'] = Hash::make($request->password);
@@ -82,20 +79,21 @@ class AuthController extends BaseController
             $image = $request->file('image');
             $fileToStore =$image->getClientOriginalName();
             $image->move(base_path('public/user'), $fileToStore);
-
         } else {
             $fileToStore = 'noimage.jpg';
         }
         $user = new User($fields);
         $user['image']=$fileToStore;
         $role = Role::find(1);
+        $user->username = $request['username'];
         $user->save();
         $role->users()->save($user);
         $userResponse = new User();
         $userResponse->email = $user->email;
         $userResponse->id = $user->id;
         $userResponse->name = $user->name;
-        $userResponse->image=$fileToStore;
+        $userResponse->image = $fileToStore;
+        $userResponse->username = $user->username;
 
         return response()->json([
             'access_token' => $this->jwt($user),
