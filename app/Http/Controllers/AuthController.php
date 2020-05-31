@@ -54,6 +54,7 @@ class AuthController extends BaseController
         $userResponse->email = $user->email;
         $userResponse->id = $user->id;
         $userResponse->name = $user->name;
+        $userResponse->image = $user->image;
 
         if (Hash::check($this->request->input('password'), $user->password)) {
             return response()->json([
