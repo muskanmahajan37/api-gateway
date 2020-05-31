@@ -25,9 +25,9 @@ class UserSeeder extends Seeder
 
         $admin = User::create(['name' => 'user','email'=>$email,'password'=>$password_hashed,'image'=>'noimage.jpg']);
         $user = User::create(['name' => 'user','email'=>$userEmail,'password'=>$user_password_hashed,'image'=>'noimage.jpg']);
-        $user3 = User::create(['name' => 'Taulant','email'=>'taulant@gmail.com','password'=>$user_password_hashed,'image'=>'noimage.jpg']);
-        $user4 = User::create(['name' => 'Valon','email'=>'valon@gmail.com','password'=>$user_password_hashed,'image'=>'noimage.jpg']);
-        $user5 = User::create(['name' => 'Rron','email'=>'rron@gmail.com','password'=>$user_password_hashed,'image'=>'noimage.jpg']);
+        $user3 = User::create(['name' => 'taulantdema','email'=>'taulant@gmail.com','password'=>$user_password_hashed,'image'=>'noimage.jpg']);
+        $user4 = User::create(['name' => 'valonjanuzaj','email'=>'valon@gmail.com','password'=>$user_password_hashed,'image'=>'noimage.jpg']);
+        $user5 = User::create(['name' => 'rronjakupi','email'=>'rron@gmail.com','password'=>$user_password_hashed,'image'=>'noimage.jpg']);
 
         $userRole->users()->save($user);
         $userRole->users()->save($user3);
