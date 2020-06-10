@@ -22,7 +22,7 @@ trait ConsumeExternalService
 
         if(isset($this->secret))
         {
-            $headers['Authorization'] = $this->secret;
+            $headers['ApiAccessKey'] = $this->secret;
         }
 
         $response = $client->request($method, $requestUrl, [
