@@ -23,6 +23,7 @@ $router->get('/categories/{category}/subcategories', 'Service\SubCategoryControl
 $router->get('/subcategories', 'Service\SubCategoryController@index');
 $router->get('subcategories/{subcategory}/services', 'Service\ServiceController@findBySubCategory');
 
+$router->get('mail', 'EmailController@sendEmail');
 
 // Protected Routes
 $router->group(['middleware' => 'jwt.auth'], function () use ($router) {
