@@ -1,6 +1,8 @@
 <?php
 
-require_once __DIR__.'/../vendor/autoload.php';
+use Dusterio\LumenPassport\PassportServiceProvider;
+
+require_once __DIR__ . '/../vendor/autoload.php';
 
 try {
     (new Dotenv\Dotenv(dirname(__DIR__)))->load();
@@ -23,9 +25,11 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
- $app->withFacades();
-
- $app->withEloquent();
+$app->withFacades();
+$app->withFacades(true, [
+    'Illuminate\Support\Facades\Mail' => 'Mail'
+]);
+$app->withEloquent();
 $app->register(App\Providers\RouteBindingServiceProvider::class);
 
 /**
@@ -76,6 +80,8 @@ $app->singleton(
      'jwt.auth' => App\Http\Middleware\JwtMiddleware::class,
      'client.credentials' => Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
  ]);
+
+
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers
@@ -89,11 +95,13 @@ $app->singleton(
 
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
- $app->register(App\Providers\AuthServiceProvider::class);
- $app->register(\Laravel\Passport\PassportServiceProvider::class);
- $app->register(\Dusterio\LumenPassport\PassportServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
+$app->register(\Laravel\Passport\PassportServiceProvider::class);
+$app->register(PassportServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 $app->register(App\Providers\AppServiceProvider::class);
+$app->configure('mail');
+$app->register(Illuminate\Mail\MailServiceProvider::class);
 $app->middleware([
     App\Http\Middleware\CorsMiddleware::class
 ]);
