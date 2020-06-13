@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Welcome;
 use App\Role;
 use App\User;
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Lumen\Routing\Controller as BaseController;
 use Validator;
 
@@ -95,7 +97,7 @@ class AuthController extends BaseController
         $userResponse->name = $user->name;
         $userResponse->image = $fileToStore;
         $userResponse->username = $user->username;
-
+        Mail::to($user->email)->send(new Welcome($fields));
         return response()->json([
             'access_token' => $this->jwt($user),
             'user' => $userResponse
