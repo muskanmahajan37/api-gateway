@@ -13,6 +13,8 @@ $router->get("/charge", 'Payment\PaymentController@index');
 
 // Services
 $router->get('/services', 'Service\ServiceController@index');
+$router->get('services/{service}', 'Service\ServiceController@show');
+
 
 
 // Categories - Subcategories
@@ -32,10 +34,10 @@ $router->group(['middleware' => 'jwt.auth'], function () use ($router) {
     $router->delete('/users/{user}', 'UserController@destroy');
     $router->patch('/users/{user}', 'UserController@update');
 
-    $router->get('services/{service}', 'Service\ServiceController@show');
     $router->delete('services/{service}', 'Service\ServiceController@destroy');
     $router->post('services', 'Service\ServiceController@store');
     $router->patch('services/{service}', 'Service\ServiceController@update');
+
 
 
     $router->post('subcategories', 'Service\SubCategoryController@store');
