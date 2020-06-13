@@ -7,7 +7,7 @@ return [
         "address" => env('MAIL_FROM_ADDRESS'),
         "name" => "FLEX"
     ),
-    "username" => "fdb5be632869c8",
-    "password" => "fd9b9e05bd45d8",
+    "username" => env("MAIL_USERNAME"),
+    "password" => env("MAIL_PASSWORD"),
     "sendmail" => "/usr/sbin/sendmail -bs"
 ];
