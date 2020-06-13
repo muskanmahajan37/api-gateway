@@ -35,8 +35,6 @@ class ServiceService
             $data['image']='noimage,jpg';
 
         }
-
-
         return $this->performRequest('POST', '/services', $data);
     }
 
@@ -48,6 +46,14 @@ class ServiceService
 
     public function update($data, $service)
     {
+        if($data['image']){
+            $fileToStore= $data['image'];
+            $file = $fileToStore->getClientOriginalName();
+            $data['image']=$file;
+        }else{
+            $data['image']='noimage,jpg';
+
+        }
         return $this->performRequest('PATCH', "/services/{$service}", $data);
     }
 

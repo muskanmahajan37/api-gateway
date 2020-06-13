@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Service;
 
 use App\Http\Controllers\Controller;
+use App\Service;
 use App\Services\CategoryService;
 use App\Services\ServiceService;
 use App\Traits\ApiResponser;
@@ -26,9 +27,8 @@ class ServiceController extends Controller
 
     public function store(Request $request)
     {
-
         $image = $request->file('image');
-         $fileToStore =$image->getClientOriginalName();
+        $fileToStore =$image->getClientOriginalName();
         $image->move(base_path('public/images'), $fileToStore);
         return $this->successResponse($this->serviceService->store($request->all()));
 
@@ -39,8 +39,11 @@ class ServiceController extends Controller
         return $this->successResponse($this->serviceService->show($service));
     }
 
-    public function update(Request $request, $service)
+    public function update(Request $request,$service)
     {
+        $image = $request->file('image');
+        $fileToStore =$image->getClientOriginalName();
+        $image->move(base_path('public/images'), $fileToStore);
         return $this->successResponse($this->serviceService->update($request->all(), $service));
     }
 
@@ -61,19 +64,3 @@ class ServiceController extends Controller
     }
 }
 
-////        $image = $request->file('image');
-////        $fileToStore =$image->getClientOriginalName();
-////        return $fileToStore;
-////        return $request->all();
-//        $imagee = $request->file('image');
-//        $fileToStore =$imagee->getClientOriginalName();
-//        $user_id = $request->user_id;
-//        $name=$request->name;
-//        $description = $request->description;
-//        $category_id = $request->category_id;
-//        $subcategory_id = $request->subcategory_id;
-//        $price = $request->price;
-//        $image= $fileToStore;
-//        $data = array($user_id,$name,$description,$category_id,$subcategory_id,$price,$image);
-////        return $fileToStore;
-////        return $request->all();
