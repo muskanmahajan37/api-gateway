@@ -3,6 +3,10 @@
 // Auth routes
 $router->post('/login', 'AuthController@authenticate');
 $router->post('/register', 'AuthController@register');
+$router->get('logintest', 'UserController@git');
+
+$router->get('/sign-in/github', 'Social\LoginController@github');
+$router->get('/sign-in/github/redirect', 'Social\LoginController@githubRedirect');
 
 // User
 $router->get('users/{user}/services', 'Service\ServiceController@findByUser');
