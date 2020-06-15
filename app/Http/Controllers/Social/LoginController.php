@@ -20,6 +20,11 @@ class LoginController
 
     }
 
+    public function git()
+    {
+        return view('login');
+    }
+
     protected function jwt(User $user)
     {
         $payload = [
