@@ -100,6 +100,7 @@ $app->register(\Laravel\Passport\PassportServiceProvider::class);
 $app->register(PassportServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 $app->register(App\Providers\AppServiceProvider::class);
+$app->register(Laravel\Socialite\SocialiteServiceProvider::class);
 $app->configure('mail');
 $app->register(Illuminate\Mail\MailServiceProvider::class);
 $app->middleware([
