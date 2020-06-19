@@ -11,15 +11,13 @@
 |
 */
 
-use App\Role;
-
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-    $role = Role::find(1);
-    return [
-        'name' => $faker->name,
-        'email' => $faker->email,
-        'username'=>$faker->name,
-        'role_id'=>$role,
-        'password' => password_hash('123456', PASSWORD_BCRYPT)
-    ];
-});
+//$factory->define(App\User::class, function (Faker\Generator $faker) {
+//    return [
+//        'name' => $faker->name,
+//        'email' => $faker->email,
+////        'password' => bcrypt('12345')
+////        app('hash')->make('1234');
+////        'password' => Hash::make('12345')
+//        'password' => password_hash('12345', PASSWORD_BCRYPT)
+//    ];
+//});
