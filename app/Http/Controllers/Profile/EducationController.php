@@ -39,7 +39,7 @@ class EducationController extends Controller
 
         $eupdate->update();
         return response()->json([
-            'message' => 'Updated!',
+            'message' => 'Updated education!',
             'education' => $eupdate
         ], 201);
     }
