@@ -38,7 +38,7 @@ class LanguageController extends Controller
 
         $lUpdate->update();
         return response()->json([
-            'message' => 'Updated!',
+            'message' => 'Updated language!',
             'language' => $lUpdate
         ], 201);
     }
