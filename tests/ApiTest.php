@@ -17,15 +17,15 @@ class ApiTest extends TestCase
 //    }
     public function test_add_new_skill()
     {
-      $response = $this->call('POST', '/skills', ['name' => 'a','user_id'=>1]);
+      $response = $this->call('POST', '/skills', ['name' => 'te','user_id'=>1]);
       $this->assertEquals(200, $response->status());
     }
      public function test_delete_skill(){
-        $response = $this->call('DELETE', '/skills/10');
+        $response = $this->call('DELETE', '/skills/7');
         $this->assertEquals(200, $response->status());
     }
     public function test_add_new_education(){
-        $response = $this->call('POST', '/educations',['name'=>'UBT','user_id'=>2]);
+        $response = $this->call('POST', '/educations',['name'=>'der','user_id'=>1]);
         $this->assertEquals(201, $response->status());
     }
 }
