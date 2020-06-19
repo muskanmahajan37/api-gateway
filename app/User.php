@@ -24,7 +24,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     public function skills(){
-        return $this->hasMany(Role::class);
+        return $this->hasMany(Skill::class);
+    }
+    public function languages(){
+        return $this->hasMany(Language::class);
+    }
+    public function educations(){
+        return $this->hasMany(Education::class);
+    }
+    public function certifications(){
+        return $this->hasMany(Certification::class);
     }
 
 }

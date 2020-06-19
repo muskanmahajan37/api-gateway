@@ -99,6 +99,7 @@ class AuthController extends BaseController
         $userResponse->username = $user->username;
         Mail::to($user->email)->send(new Welcome($fields));
         return response()->json([
+            'created' => true,
             'access_token' => $this->jwt($user),
             'user' => $userResponse
         ], 201);
