@@ -11,5 +11,11 @@ class RouteBindingServiceProvider extends BaseServiceProvider
     {
         $binder = $this->binder;
         $binder->bind('user', 'App\User');
+        $binder->bind('skill', 'App\Skill');
+        $binder->bind('certification', 'App\Certification');
+        $binder->bind('education', 'App\Education');
+        $binder->bind('language', 'App\Language');
+
+
     }
 }
