@@ -5,12 +5,13 @@ use Laravel\Lumen\Testing\DatabaseTransactions;
 
 class ExampleTest extends TestCase
 {
-
-    public function testApplication(){
-        $user = factory('App\User')->make();
-        $id = $user->id;
-        assert($id == $user->id);
-
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testSomethingIsTrue()
+    {
+        $this->assertTrue(true);
     }
-
 }
