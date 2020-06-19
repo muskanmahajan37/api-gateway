@@ -38,7 +38,7 @@ class CertificationController extends Controller
 
         $cUpdate->update();
         return response()->json([
-            'message' => 'Updated!',
+            'message' => 'Updated certification!',
             'certification' => $cUpdate
         ], 201);
     }
