@@ -36,7 +36,7 @@ class SkillController extends Controller
 
         $skillToUpdate->update();
         return response()->json([
-            'message' => 'Updated!',
+            'message' => 'Updated skill!',
             'skill' => $skillToUpdate
         ], 201);
     }
