@@ -109,7 +109,7 @@ class AuthController extends BaseController
 
 
     public function test(){
-        // Test endpoint.
+        return Auth::user();
     }
 
 }
