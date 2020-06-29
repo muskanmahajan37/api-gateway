@@ -21,9 +21,33 @@ class PaymentService
 
     public function index()
     {
-        return $this->performRequest('GET', '/charge');
+        return $this->performRequest("GET", "/payments");
     }
 
+    public function show($payment){
+        return $this->performRequest("GET","payments/{$payment}");
+    }
 
+    public function create($data){
+        return $this->performRequest("POST", "/payments",$data);
+    }
+
+    public function destroy($payment){
+        return $this->performRequest("DELETE","/payments/{$payment}");
+    }
+
+    # Stripe customer
+
+    public function showAllCustomers(){
+        return $this->performRequest("GET","/customers");
+    }
+
+    public function showCustomer($customer){
+        return $this->performRequest("GET","/customers/{$customer}");
+    }
+
+    public function deleteCustomer($customer){
+        return $this->performRequest("DELETE","/customers/{$customer}");
+    }
 
 }

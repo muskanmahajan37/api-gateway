@@ -17,6 +17,7 @@ return [
         'guard' => env('AUTH_GUARD', 'api'),
     ],
 
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -35,7 +36,10 @@ return [
     */
 
     'guards' => [
-        'api' => ['driver' => 'passport'],
+        'api' => [
+            'driver' => 'jwt',
+            'provider' => 'users',
+        ],
     ],
 
     /*

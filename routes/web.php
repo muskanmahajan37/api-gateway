@@ -3,10 +3,21 @@
 // Auth routes
 $router->post('/login', 'AuthController@authenticate');
 $router->post('/register', 'AuthController@register');
-$router->get('logintest', 'Social\LoginController@git');
 
+# Todo: Rron implemento Loginin me github.
+$router->get('logintest', 'Social\LoginController@git');
 $router->get('/sign-in/github', 'Social\LoginController@github');
 $router->get('/sign-in/github/redirect', 'Social\LoginController@githubRedirect');
+
+# Todo: Move payments to protected route.
+$router->get("/payments/all", 'Payment\PaymentController@index');
+$router->get("/payments/{payment}", 'Payment\PaymentController@show');
+$router->post("/payments/create",'Payment\PaymentController@create');
+$router->delete("/payments/delete",'Payment\PaymentController@destroy');
+
+$router->get("/customers/all", 'Payment\PaymentController@showAllCustomers');
+$router->get("/customers/{customer}", 'Payment\PaymentController@showCustomer');
+$router->delete("/customers/{customer}",'Payment\PaymentController@deleteCustomer');
 
 // User
 $router->get('users/{user}/services', 'Service\ServiceController@findByUser');
@@ -94,6 +105,10 @@ $router->group(['middleware' => 'jwt.auth'], function () use ($router) {
     $router->put('/authors/{author}', 'Author\AuthorController@update');
     $router->patch('/authors/{author}', 'Author\AuthorController@update');
     $router->delete('/authors/{author}', 'Author\AuthorController@destroy');
+
+
+    //Payment service routes
+
 });
 
 
