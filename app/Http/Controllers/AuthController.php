@@ -7,6 +7,7 @@ use App\Role;
 use App\User;
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Laravel\Lumen\Routing\Controller as BaseController;
@@ -19,6 +20,7 @@ class AuthController extends BaseController
     public function __construct(Request $request)
     {
         $this->request = $request;
+
     }
 
     protected function jwt(User $user)
@@ -103,6 +105,11 @@ class AuthController extends BaseController
             'access_token' => $this->jwt($user),
             'user' => $userResponse
         ], 201);
+    }
+
+
+    public function test(){
+        // Test endpoint.
     }
 
 }

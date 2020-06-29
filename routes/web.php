@@ -3,6 +3,8 @@
 // Auth routes
 $router->post('/login', 'AuthController@authenticate');
 $router->post('/register', 'AuthController@register');
+$router->get("/test",'AuthController@test');
+
 
 # Todo: Rron implemento Loginin me github.
 $router->get('logintest', 'Social\LoginController@git');
