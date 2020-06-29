@@ -1,6 +1,6 @@
 <?php
 
-use Dusterio\LumenPassport\PassportServiceProvider;
+//use Dusterio\LumenPassport\PassportServiceProvider;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -78,7 +78,7 @@ $app->singleton(
 
 //     'auth' => App\Http\Middleware\Authenticate::class,
      'jwt.auth' => App\Http\Middleware\JwtMiddleware::class,
-     'client.credentials' => Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
+//     'client.credentials' => Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
  ]);
 
 
@@ -96,8 +96,8 @@ $app->singleton(
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
-$app->register(\Laravel\Passport\PassportServiceProvider::class);
-$app->register(PassportServiceProvider::class);
+//$app->register(\Laravel\Passport\PassportServiceProvider::class);
+//$app->register(PassportServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(Laravel\Socialite\SocialiteServiceProvider::class);

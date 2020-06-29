@@ -44,9 +44,12 @@ class SkillController extends Controller
     public function index()
     {
         $skills = Skill::all();
-        return response()->json(
-            $skills,
-            201);
+        return response()->json([
+            'created'=>true,
+            $skills
+        ],
+
+            200);
     }
     public function show(Skill $skill){
         return $skill;

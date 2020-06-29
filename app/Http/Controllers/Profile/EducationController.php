@@ -58,7 +58,7 @@ class EducationController extends Controller
     {
         $education->delete();
         return response()->json([
-            'message' => 'Successfully deleted education!'], 201);
+            'message' => 'Successfully deleted education!'], 200);
     }
     public function findByUser(User $user){
         $educations=$user->load("educations");
