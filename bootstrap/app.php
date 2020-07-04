@@ -103,9 +103,11 @@ $app->register(App\Providers\AppServiceProvider::class);
 $app->register(Laravel\Socialite\SocialiteServiceProvider::class);
 $app->configure('mail');
 $app->register(Illuminate\Mail\MailServiceProvider::class);
+$app->register(Illuminate\Notifications\NotificationServiceProvider::class);
 $app->middleware([
     App\Http\Middleware\CorsMiddleware::class
 ]);
+$app->alias('mailer', \Illuminate\Contracts\Mail\Mailer::class);
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
