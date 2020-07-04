@@ -24,8 +24,8 @@ class UserSeeder extends Seeder
         $userRole = Role::find(1);
         $adminRole = Role::find(2);
 
-        $admin = User::create(['name' => 'user', 'username' => $username, 'email' => $email, 'password' => $password_hashed, 'image' => 'noimage.jpg']);
-        $user = User::create(['name' => 'user', 'username' => $userUsername, 'email' => $userEmail, 'password' => $user_password_hashed, 'image' => 'noimage.jpg']);
+        $admin = User::create(['name' => 'admin', 'username' => $username, 'email' => $email, 'password' => $password_hashed, 'image' => 'noimage.jpg','active'=>1,'activation_token'=>'']);
+        $user = User::create(['name' => 'user', 'username' => $userUsername, 'email' => $userEmail, 'password' => $user_password_hashed, 'image' => 'noimage.jpg','active'=>1,'activation_token'=>'']);
 
         $userRole->users()->save($user);
         $adminRole->users()->save($admin);

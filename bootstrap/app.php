@@ -48,10 +48,22 @@ $app->register(App\Providers\AppServiceProvider::class);
 $app->register(Laravel\Socialite\SocialiteServiceProvider::class);
 $app->configure('mail');
 $app->register(Illuminate\Mail\MailServiceProvider::class);
+$app->register(Illuminate\Notifications\NotificationServiceProvider::class);
 $app->middleware([
     App\Http\Middleware\CorsMiddleware::class
 ]);
 
+$app->alias('mailer', \Illuminate\Contracts\Mail\Mailer::class);
+/*
+|--------------------------------------------------------------------------
+| Load The Application Routes
+|--------------------------------------------------------------------------
+|
+| Next we will include the routes file so that they can all be added to
+| the application. This will provide all of the URLs the application
+| can respond to, as well as the controllers that may handle them.
+|
+*/
 
 $app->router->group([
     'namespace' => 'App\Http\Controllers',

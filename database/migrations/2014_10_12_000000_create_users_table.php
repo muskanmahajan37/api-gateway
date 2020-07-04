@@ -21,8 +21,11 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('image')->nullable();
             $table->unsignedBigInteger('role_id')->nullable();
+            $table->boolean('active')->default(false);
+            $table->string('activation_token');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

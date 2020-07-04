@@ -6,6 +6,15 @@ $router->post('/register', 'AuthController@register');
 $router->get("/test",'AuthController@test');
 
 
+
+//Reset password
+Route::post('create', 'PasswordResetController@create');
+Route::get('/find/{token}', 'PasswordResetController@find');
+Route::post('reset', 'PasswordResetController@reset');
+
+//Activate account
+Route::get('register/activate/{token}', 'AuthController@signupActivate');
+
 # Todo: Rron implemento Loginin me github.
 $router->get('logintest', 'Social\LoginController@git');
 $router->get('/sign-in/github', 'Social\LoginController@github');
