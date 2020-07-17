@@ -5,3 +5,6 @@ Homestead.yaml
 .env
 database/database.sqlite
 storage/*.key
+
+!public/user/
+!public/images/

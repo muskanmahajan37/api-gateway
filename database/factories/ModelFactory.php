@@ -11,13 +11,13 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-    return [
-        'name' => $faker->name,
-        'email' => $faker->email,
-//        'password' => bcrypt('12345')
-//        app('hash')->make('1234');
-//        'password' => Hash::make('12345')
-        'password' => password_hash('12345', PASSWORD_BCRYPT)
-    ];
-});
+//$factory->define(App\User::class, function (Faker\Generator $faker) {
+//    return [
+//        'name' => $faker->name,
+//        'email' => $faker->email,
+////        'password' => bcrypt('12345')
+////        app('hash')->make('1234');
+////        'password' => Hash::make('12345')
+//        'password' => password_hash('12345', PASSWORD_BCRYPT)
+//    ];
+//});

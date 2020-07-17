@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Service;
 use App\Http\Controllers\Controller;
 use App\Services\CategoryService;
 use App\Services\ServiceService;
+use App\Services\SubcategoryService;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -14,7 +15,7 @@ class SubCategoryController
     use ApiResponser;
     public $subcategoryService;
 
-    public function __construct(SubCategoryService $subcategoryService)
+    public function __construct(SubcategoryService $subcategoryService)
     {
         $this->subcategoryService = $subcategoryService;
     }
@@ -42,5 +43,9 @@ class SubCategoryController
     public function destroy($subcategory)
     {
         return $this->successResponse($this->subcategoryService->destroy($subcategory));
+    }
+
+    public function findByCategory($category){
+        return $this->successResponse($this->subcategoryService->findByCategory($category));
     }
 }

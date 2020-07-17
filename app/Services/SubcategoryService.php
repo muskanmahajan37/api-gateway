@@ -44,6 +44,10 @@ class SubcategoryService
         return $this->performRequest('DELETE', "/subcategories/{$subcategory}");
     }
 
+    public function findByCategory($category){
+        return $this->performRequest("GET","/categories/{$category}/subcategories");
+    }
+
 
 }
 

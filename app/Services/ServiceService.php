@@ -2,6 +2,9 @@
 namespace App\Services;
 
 use App\Traits\ConsumeExternalService;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 class ServiceService
 {
@@ -24,6 +27,14 @@ class ServiceService
 
     public function store($data)
     {
+        if($data['image']){
+            $fileToStore= $data['image'];
+            $file = $fileToStore->getClientOriginalName();
+            $data['image']=$file;
+        }else{
+            $data['image']='noimage,jpg';
+
+        }
         return $this->performRequest('POST', '/services', $data);
     }
 
@@ -35,6 +46,14 @@ class ServiceService
 
     public function update($data, $service)
     {
+        if($data['image']){
+            $fileToStore= $data['image'];
+            $file = $fileToStore->getClientOriginalName();
+            $data['image']=$file;
+        }else{
+            $data['image']='noimage,jpg';
+
+        }
         return $this->performRequest('PATCH', "/services/{$service}", $data);
     }
 
@@ -42,5 +61,17 @@ class ServiceService
     {
         return $this->performRequest('DELETE', "/services/{$service}");
     }
+    public function findByCategory($category){
+
+        return $this->performRequest('GET', "/categories/{$category}/services");
+    }
+    public function findBySubCategory($subcategory){
+        return $this->performRequest('GET', "/subcategories/{$subcategory}/services");
+    }
+    public function findByUser($user){
+        return $this->performRequest('GET', "/users/{$user}/services");
+
+    }
+
 
 }
