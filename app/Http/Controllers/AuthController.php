@@ -21,6 +21,7 @@ class AuthController extends BaseController
     public function __construct(Request $request)
     {
         $this->request = $request;
+
     }
 
     protected function jwt(User $user)
@@ -125,6 +126,11 @@ class AuthController extends BaseController
         $user->activation_token = '';
         $user->save();
         return $user;
+    }
+
+
+    public function test(){
+        return Auth::user();
     }
 
 }

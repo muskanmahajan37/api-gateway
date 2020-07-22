@@ -3,6 +3,8 @@
 // Auth routes
 $router->post('/login', 'AuthController@authenticate');
 $router->post('/register', 'AuthController@register');
+$router->get("/test",'AuthController@test');
+
 
 
 //Reset password
