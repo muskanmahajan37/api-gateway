@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
+
 
 class UserController extends Controller
 {
@@ -49,14 +50,24 @@ class UserController extends Controller
             'email' => 'string',
             'password' => 'string',
         ]);
-        $user->name = $request['name'];
-        $user->email = $request['email'];
+        $userToUpdate = $user;
+        $userToUpdate->name = empty($request->name) ? $user->name : $request->name;;
+        $userToUpdate->username = empty($request->username) ? $user->username : $request->username;
+        $userToUpdate->email = empty($request->email) ? $user->email : $request->email;
         $password = null;
         if ($request['password']) {
             $password = Hash::make($request->password);
-            $user->password = $password;
+            $userToUpdate->password = $password;
         }
-        $user->update();
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $fileToStore =$image->getClientOriginalName();
+            $image->move(base_path('public/user'), $fileToStore);
+        } else {
+            $fileToStore = 'noimage.jpg';
+        }
+        $userToUpdate->image=$fileToStore;
+        $userToUpdate->update();
         return response()->json([
             'message' => 'User updated successfully!',
             'user' => $user
