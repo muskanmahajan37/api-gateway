@@ -77,9 +77,8 @@ class AuthController extends BaseController
             'email' => 'required',
             'username' => 'required',
             'password' => 'required|confirmed',
-            'image' => 'image'
+            'image' => 'image|max:1024'
         ];
-
         $fields = $this->validate($request, $rules);
         $fields['password'] = Hash::make($request->password);
         if ($request->hasFile('image')) {
