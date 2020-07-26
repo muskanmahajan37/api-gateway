@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         $user_password_hashed = Hash::make($userPassword);
         $userRole = Role::find(1);
         $adminRole = Role::find(2);
-        $user = User::create(['name' => 'user', 'username' => $userUsername, 'email' => $userEmail, 'password' => $user_password_hashed, 'image' => 'noimage.jpg','active'=>1,'activation_token'=>'']);
+        $user = User::create(['name' => 'user', 'username' => $userUsername, 'email' => $userEmail, 'password' => $user_password_hashed, 'image' => 'john-doe.jpg','active'=>1,'activation_token'=>'']);
         $admin = User::create(['name' => 'admin', 'username' => $username, 'email' => $email, 'password' => $password_hashed, 'image' => 'noimage.jpg','active'=>1,'activation_token'=>'']);
         $adminRole->users()->save($admin);
         $userRole->users()->save($user);
