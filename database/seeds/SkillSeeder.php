@@ -7,8 +7,8 @@ class SkillSeeder extends Seeder
 {
     public function run()
     {
-        Skill::create(['name' => 'Java', 'user_id' =>2]);
-        Skill::create(['name' => 'Html', 'user_id' =>2]);
-        Skill::create(['name' => 'Laravel', 'user_id' =>2]);
+        Skill::create(['name' => 'Java', 'user_id' =>1]);
+        Skill::create(['name' => 'Html', 'user_id' =>1]);
+        Skill::create(['name' => 'Laravel', 'user_id' =>1]);
     }
 }

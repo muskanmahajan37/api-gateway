@@ -11,8 +11,8 @@ class EducationSeeder extends Seeder
      */
     public function run()
     {
-        Education::create(['name' => 'UBT', 'user_id' =>2]);
-        Education::create(['name' => 'FIEK', 'user_id' =>2]);
+        Education::create(['name' => 'UBT', 'user_id' =>1]);
+        Education::create(['name' => 'FIEK', 'user_id' =>1]);
 
     }
 }

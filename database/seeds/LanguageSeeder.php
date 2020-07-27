@@ -11,8 +11,9 @@ class LanguageSeeder extends Seeder
      */
     public function run()
     {
-        Language::create(['name' => 'English', 'user_id' =>2]);
-        Language::create(['name' => 'French', 'user_id' =>2]);
-        Language::create(['name' => 'Italian', 'user_id' =>2]);
+        Language::create(['name' => 'English', 'user_id' =>1]);
+        Language::create(['name' => 'French', 'user_id' =>1]);
+        Language::create(['name' => 'Italian', 'user_id' =>1]);
+        Language::create(['name' => 'German', 'user_id' =>1]);
     }
 }

@@ -11,8 +11,8 @@ class CertificationSeeder extends Seeder
      */
     public function run()
     {
-        Certification::create(['name' => 'Cactus Education', 'user_id' =>2]);
-        Certification::create(['name' => 'Auk training', 'user_id' =>2]);
+        Certification::create(['name' => 'Cactus Education', 'user_id' =>1]);
+        Certification::create(['name' => 'Auk training', 'user_id' =>1]);
 
     }
 }
