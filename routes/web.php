@@ -15,12 +15,10 @@ Route::post('reset', 'PasswordResetController@reset');
 //Activate account
 Route::get('register/activate/{token}', 'AuthController@signupActivate');
 
-# Todo: Rron implemento Loginin me github.
 $router->get('logintest', 'Social\LoginController@git');
 $router->get('/sign-in/github', 'Social\LoginController@github');
 $router->get('/sign-in/github/redirect', 'Social\LoginController@githubRedirect');
 
-# Todo: Move payments to protected route.
 $router->get("/payments/all", 'Payment\PaymentController@index');
 $router->get("/payments/{payment}", 'Payment\PaymentController@show');
 $router->post("/payments/create",'Payment\PaymentController@create');
@@ -116,10 +114,6 @@ $router->group(['middleware' => 'jwt.auth'], function () use ($router) {
     $router->put('/authors/{author}', 'Author\AuthorController@update');
     $router->patch('/authors/{author}', 'Author\AuthorController@update');
     $router->delete('/authors/{author}', 'Author\AuthorController@destroy');
-
-
-    //Payment service routes
-
 });
 
 
