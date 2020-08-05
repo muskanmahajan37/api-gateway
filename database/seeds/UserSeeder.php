@@ -21,9 +21,11 @@ class UserSeeder extends Seeder
         $userRole = Role::find(1);
         $adminRole = Role::find(2);
         $user = User::create(['name' => 'user', 'username' => $userUsername, 'email' => $userEmail, 'password' => $user_password_hashed, 'image' => 'john-doe.jpg','active'=>1,'activation_token'=>'']);
-        $admin = User::create(['name' => 'admin', 'username' => $username, 'email' => $email, 'password' => $password_hashed, 'image' => 'noimage.jpg','active'=>1,'activation_token'=>'']);
+        $admin = User::create(['name' => 'admin', 'username' => $username, 'email' => $email, 'password' => $password_hashed, 'image' => 'noimage.jpg', 'active' => 1, 'activation_token' => '']);
+        $filan = User::create(['name' => 'filan', 'username' => "filan", 'email' => "filan@test.com", 'password' => $password_hashed, 'image' => 'noimage.jpg', 'active' => 1, 'activation_token' => '']);
         $adminRole->users()->save($admin);
         $userRole->users()->save($user);
+        $userRole->users()->save($filan);
     }
 
 
